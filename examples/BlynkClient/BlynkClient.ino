@@ -80,5 +80,12 @@ void setup()
 void loop()
 {
   Blynk.run();
+  
+    if (!Blynk.connected()){
+    Serial.println("Blynk was disconnected.... ");
+    modem.restart();
+    Blynk.begin(auth, modem, apn, user, pass);
+    Serial.println("Modem was restarted and reconfigured... ");
+  }
 }
 
